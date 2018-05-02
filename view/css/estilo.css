@@ -1,0 +1,132 @@
+body {
+	background-color: #1a8cff;
+	color: #00284d;
+	font-family: Verdana Helvetica Arial;
+	font-style: normal;
+	font-size: 16px;
+	padding-top: 0px;
+	margin-top: 0px;
+}
+
+header {
+	background-color: white;
+	text-align: center;
+	width: 1000px;
+	height: 200px;
+	margin-top: 0px;
+	margin-left: 130px;
+	border: 1px solid black;
+}
+
+.logo {
+	width: 210px;
+	height: 190px;
+	margin-left: 0px;
+	margin-top: 10px;
+	float: left;
+}
+
+.titulo {
+	font-size: 70px;
+	color: black;
+}
+
+.subtitulo {
+	font-size: 20px;
+	color: black;
+	text-align: center;
+}
+
+nav {
+	height: 50px;
+	width: 1000px;
+	margin-top: 0px;
+	border: 1px solid black;
+	margin-left: 130px;
+	margin-bottom: 0px;
+}
+
+/* Area Responsavel por fazer o Menu */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    padding-left: 200px;
+}
+
+li {
+    float: left;
+    margin-left: 30px;
+}
+
+button {
+	background-color: #333;
+	border: 0px;
+	color:white;
+	height: 50px;
+}
+
+button:hover {
+	background-color: #111;
+	border: 0px;
+	color:white;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+section {
+	margin-top: 0px;
+	border: 1px solid black;
+	margin-left: 130px;
+	margin-right: 0px;
+	width: 1000px;
+	height: 400px;
+	background-color: white;
+	float: left;
+}
+
+#imgTemp {
+	margin-top: 0px;
+	border: 1px solid black;
+	margin-left: 130px;
+	margin-right: 0px;
+	width: 800px;
+	height: 400px;
+	float: left;
+}
+/*
+aside {
+	height: 400px;
+	width: 198px;
+	border: 1px solid black;
+	background-color: #333;
+	float: left;
+	margin-left: 0px; 
+}
+*/
+footer {
+	height: 50px;
+	width: 1000px;
+	margin-top: 0px;
+	background-color: #333;
+	border: 1px solid black;
+	margin-left: 130px;
+	clear: both;
+}
+
+#footer {
+	color: white;
+	text-align: center;
+}
