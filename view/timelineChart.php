@@ -26,62 +26,67 @@ require_once("nav.php");
 
 echo '
 	<section>
-		<div id = "chart1">
-    		<svg></svg>
-		</div>
+	  <div id="container">  
+		<form method="post" action="../control/timelineChart.php">
+	      <div>
+	        <label>Prefixo1</label>
+	        <select name="prefixo1">
+	          <option value="january">January</option>
+	          <option value="february">February</option>
+	          <option value="may">May</option>
+	        </select>
+	      </div>
+	      
+	      <div>
+	        <label>Prefixo2</label>
+	        <select name="prefixo2">
+	          <option value="january">January</option>
+	          <option value="february">February</option>
+	          <option value="may">May</option>
+	        </select>
+	      </div>
 
-		<script>
-		  //$(document).ready(function(){
-		    d3.csv("file:///data/data/wallyson.lima.mobivitool/files/timeline.csv",function(err,data){
+	      <div>
+	        <label>Prefixo3</label>
+	        <select name="prefixo3">
+	          <option value="january">January</option>
+	          <option value="february">February</option>
+	          <option value="may">May</option>
+	        </select>
+	      </div>
 
-		      //get each key of the data that is not date
-		      //these will be our key in the key/value pair
-		      //the values x and y will be month and the value
-		      var dataToPlot = Object.keys(data[0]).filter(function(k){return k!="date"})
-		        .map(function(k){
-		          return {"key":k,"values":data.map(function(d){
-		           return {
-		             //lets make this a real date
-		             "x":d3.time.format("%Y-%b-%d").parse("2014-" + d.date + "-01"),
-		             "y":+d[k]
-		           }
-		          })}
-		        })
+	      <div>
+	        <label>Ano1</label>
+	        <select name="ano1">
+	          <option value="january">January</option>
+	          <option value="february">February</option>
+	          <option value="may">May</option>
+	        </select>
+	      </div>
 
-		      nv.addGraph(function() {
-		        var width = 600, height = 300;
-		        var chart = nv.models.multiBarChart().x(function(d) {
-		            return d.x;
-		        }).y(function(d) {
-		            return d.y;
-		        }).color([\'#aec7e8\', \'#7b94b5\', \'#486192\']).stacked(true)
-		        .width(width).height(height)
-		          .transitionDuration(350)
-		          .reduceXTicks(true)   //If, every single x-axis tick label will be rendered.
-		          .rotateLabels(0)      //Angle to rotate x-axis labels.
-		          .showControls(true)   //Allow user to switch between Grouped and Stacked mode.
-		          .groupSpacing(0.1)    //Distance between each group of bars.
-		        ;
+	      <div>
+	        <label>Ano2</label>
+	        <select name="ano2">
+	          <option value="january">January</option>
+	          <option value="february">February</option>
+	          <option value="may">May</option>
+	        </select>
+	      </div>
 
-		        chart.xAxis
-		            .tickFormat(d3.time.format(\'%b\'));
+	      <div>
+	        <label>Ano3</label>
+	        <select name="ano3">
+	          <option value="january">January</option>
+	          <option value="february">February</option>
+	          <option value="may">May</option>
+	        </select>
+	      </div>
 
-		        chart.yAxis
-		            .tickFormat(d3.format(\',.1f\'));
-
-		        d3.select(\'#chart1 svg\')
-		            .datum(dataToPlot)
-		            .call(chart)
-		            .style({ \'width\': width, \'height\': height });
-
-		        nv.utils.windowResize(chart.update);
-
-		        return chart;
-		      });
-
-		    })
-		  //})
-		</script>
+	      <div>
+	        <input type="submit" name="submit" value="Selecionar">  
+	      </div>
+	    </form>
+	  </div>
 	</section>
 ';
 
