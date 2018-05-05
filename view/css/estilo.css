@@ -97,6 +97,15 @@ section {
 	float: left;
 }
 
+form {
+	margin-left: 350px;
+	margin-top: 100px;
+}
+
+select {
+	width: 250px;
+}
+
 #imgTemp {
 	margin-top: 0px;
 	border: 1px solid black;

@@ -24,62 +24,81 @@ echo '
 	<section>
 	  <div id="container">  
 		<form method="post" action="../control/timelineChart.php">
+	      <table>
 	      <div>
-	        <label>Prefixo1</label>
-	        <select name="prefixo1">
+	        <tr>
+	        <td><label>Prefixo1</label></td>
+	        <td><select name="prefixo1">
 	          <option value="january">January</option>
 	          <option value="february">February</option>
 	          <option value="may">May</option>
 	        </select>
+	        </td>
+	        </tr>
 	      </div>
 	      
 	      <div>
-	        <label>Prefixo2</label>
-	        <select name="prefixo2">
+            <tr>
+	        <td><label>Prefixo2</label></td>
+	        <td><select name="prefixo2">
+	          <option value="january">January</option>
+	          <option value="february">February</option>
+	          <option value="may">May</option>
+	        </select></td>
+	        </tr>
+	      </div>
+
+	      <div>
+	        <tr>
+	        <td><label>Prefixo3</label></td>
+	        <td><select name="prefixo3">
+	          <option value="january">January</option>
+	          <option value="february">February</option>
+	          <option value="may">May</option>
+	        </select></td>
+	        </tr>
+	      </div>
+
+	      <div>
+	      	<tr>
+	        <td><label>Ano1</label></td>
+	        <td><select name="ano1">
 	          <option value="january">January</option>
 	          <option value="february">February</option>
 	          <option value="may">May</option>
 	        </select>
+	        </td>
+	        </tr>
 	      </div>
 
 	      <div>
-	        <label>Prefixo3</label>
-	        <select name="prefixo3">
+	        <tr>
+	        <td><label>Ano2</label></td>
+	        <td><select name="ano2">
 	          <option value="january">January</option>
 	          <option value="february">February</option>
 	          <option value="may">May</option>
 	        </select>
+	         </td>
+	        </tr>
 	      </div>
 
 	      <div>
-	        <label>Ano1</label>
-	        <select name="ano1">
+	        <tr>
+	        <td><label>Ano3</label></td>
+	        <td><select name="ano3">
 	          <option value="january">January</option>
 	          <option value="february">February</option>
 	          <option value="may">May</option>
 	        </select>
+	        </td>
+	        </tr>
 	      </div>
 
 	      <div>
-	        <label>Ano2</label>
-	        <select name="ano2">
-	          <option value="january">January</option>
-	          <option value="february">February</option>
-	          <option value="may">May</option>
-	        </select>
-	      </div>
-
-	      <div>
-	        <label>Ano3</label>
-	        <select name="ano3">
-	          <option value="january">January</option>
-	          <option value="february">February</option>
-	          <option value="may">May</option>
-	        </select>
-	      </div>
-
-	      <div>
+	      <tr><td>
 	        <input type="submit" name="submit" value="Selecionar">  
+	      </td></tr>
 	      </div>
 	    </form>
 	  </div>

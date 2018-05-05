@@ -25,34 +25,42 @@ echo '
 	  <div id="container">  
 		<form method="post" action="../control/zoomChart.php">
 	      <div>
-	        <label>Prefixo</label>
-	        <select name="prefixo">
+	      <tr>
+	        <td><label>Prefixo</label></td>
+	        <td><select name="prefixo">
 	          <option value="january">January</option>
 	          <option value="february">February</option>
 	          <option value="may">May</option>
-	        </select>
+	        </select></td>
+	        </tr>
 	      </div>
 	      
 	      <div>
-	        <label>Ano</label>
-	        <select name="ano">
+	      	<tr>
+	        <td><label>Ano</label></td>
+	        <td><select name="ano">
 	          <option value="january">January</option>
 	          <option value="february">February</option>
 	          <option value="may">May</option>
-	        </select>
+	        </select></td>
+	        </tr>
 	      </div>
 
 	      <div>
-	        <label>Quantidade</label>
-	        <select name="qtde">
+	      	<tr>
+	        <td><label>Quantidade</label></td>
+	        <td><select name="qtde">
 	          <option value="january">January</option>
 	          <option value="february">February</option>
-	          <option value="may">May</option>
+	          <option value="may">May</option></td>
 	        </select>
+	        </tr>
 	      </div>
 
 	      <div>
+	      	<tr><td>
 	        <input type="submit" name="submit" value="Selecionar">  
+	        </td></tr>
 	      </div>
 	    </form>
 	  </div>
