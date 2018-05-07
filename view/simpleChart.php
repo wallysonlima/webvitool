@@ -26,6 +26,8 @@ echo '
 	      #imageView { border: 1px solid #000; }
 	      #imageTemp { position: absolute; top: 1px; left: 1px; }
 	    </style>
+	     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    	 <script src="script/simpleChart.js"></script>
 	</head>
 	<body>	
 ';
@@ -42,10 +44,9 @@ echo '
 		        <tr>
 		        <td><label>Prefixo</label></td>
 		        <td>
-		          <select name="prefixo">
-		            <option value="january">January</option>
-		            <option value="february">February</option>
-		            <option value="may">May</option>
+		          <select name="prefixo" id="prefixo">';
+		          	addPrefixoMunicipioSpinner();
+		         	echo '
 		          </select>  
 		        </td>
 		        </tr>
@@ -54,10 +55,25 @@ echo '
 		      <div>
 		        <tr>
 		        <td><label>Ano</label></td>
-		        <td><select name="ano">
-		          <option value="january">January</option>
-		          <option value="february">February</option>
-		          <option value="may">May</option>
+		        <td><select name="ano" id="ano">';
+		        	<script>
+		        		$("#prefixo").on("change",function(){
+					    
+					    var prefixo = $("#prefixo").val();
+					    
+					    $.ajax({
+					        url:'ajaxSimple.php',
+					        data:{pref:prefixo},
+					        type: 'post',
+					        success : function(resp){
+					            $("#ano").html(resp);               
+					        },
+					        error : function(resp){}
+					    });
+					});
+		        	</script>
+		        	
+		        	echo '
 		        </select>
 		        </td>
 		        </tr>
@@ -93,10 +109,3 @@ echo '
 	</html>
 ';
 ?>
-
-<script>
-	function addAnoSpinner(prefixo) {
-		document.write
-	}
-
-</script>
