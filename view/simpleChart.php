@@ -1,5 +1,7 @@
 <?php
 
+include_once("../control/PostoDAO.php");
+
 echo '
 	<!DOCTYPE html>
 	<meta charset="utf-8">
