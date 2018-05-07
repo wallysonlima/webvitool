@@ -2,6 +2,18 @@
 
 include_once("../control/PostoDAO.php");
 
+$postoDao = new PostoDAO(); 
+
+public function addPrefixoMunicipioSpinner() {
+	$premuni = array();
+	$premuni = $postoDao->getPrefixoAndMunicipio();
+
+	for($i = 0; $i < sizeof($premuni); $i++) {
+		echo "<option value='$premuni[$i]'>$premuni[$i]</option>";
+	}
+}
+
+
 echo '
 	<!DOCTYPE html>
 	<meta charset="utf-8">
@@ -81,3 +93,10 @@ echo '
 	</html>
 ';
 ?>
+
+<script>
+	function addAnoSpinner(prefixo) {
+		document.write
+	}
+
+</script>
