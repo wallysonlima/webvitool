@@ -1,6 +1,6 @@
 <?php
 
-include_once("../control/PostoDAO.php");
+include_once("../dao/PostoDAO.php");
 
 $postoDao = new PostoDAO(); 
 
