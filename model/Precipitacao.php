@@ -2,7 +2,7 @@
 class Precipitacao {
 	private $prefixo, $ano, $mes, $media;
 
-	public __constructor($prefixo, $ano, $mes, $media) {
+	function __constructor($prefixo, $ano, $mes, $media) {
 		$this->prefixo = $prefixo;
 		$this->ano = $ano;
 		$this->mes = $mes;

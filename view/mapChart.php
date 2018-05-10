@@ -25,6 +25,7 @@ echo '
 	      #imageView { border: 1px solid #000; }
 	      #imageTemp { position: absolute; top: 1px; left: 1px; }
 	    </style>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	</head>
 	<body>	
 ';
@@ -57,7 +58,7 @@ echo '
 					    var prefixo = $("#prefixo").val();
 					    
 					    $.ajax({
-					        url:"ajaxMap.php",
+					        url:"ajaxMapAno.php",
 					        data:{pref:prefixo},
 					        type: "post",
 					        success : function(resp){
@@ -79,10 +80,11 @@ echo '
 		        		$("#ano").on("change",function(){
 					    
 					    var ano = $("#ano").val();
+					    var prefixo = $("#prefixo").val();
 					    
 					    $.ajax({
-					        url:"ajaxMap.php",
-					        data:{a:ano},
+					        url:"ajaxMapMes.php",
+					        data:{pref:prefixo, a:ano},
 					        type: "post",
 					        success : function(resp){
 					            $("#ano").html(resp);               
