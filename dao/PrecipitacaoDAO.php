@@ -143,7 +143,7 @@ class PrecipitacaoDAO {
 
 		while ( $row = $sql->fetch() )
 		{
-			$mes = (int) $row;
+			$mes = (int) $row[0];
 			$con = null;
 			return $mes;
 		}

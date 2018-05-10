@@ -1,5 +1,18 @@
 <?php
 
+include_once("../dao/PostoDAO.php");
+
+ function addPrefixoSpinner() {
+	$postoDao = new PostoDAO(); 
+	$pre = array();
+	$pre = $postoDao->getPrefixo();
+
+	for($i = 0; $i < sizeof($pre); $i++) {
+		echo "<option value='$pre[$i]'>$pre[$i]</option><br>";
+	}
+}
+
+
 echo '
 	<!DOCTYPE html>
 	<meta charset="utf-8">
@@ -22,14 +35,14 @@ require_once("nav.php");
 echo '
 	<section>
 	  <div id="container">  
-	    <form method="post" action="../control/simpleChart.php">
+	    <form method="post" action="../control/mapChart.php">
+	    <table>
 	      <div>
 	      	<tr>
 	        <td><label>Prefixo</label></td>
-	        <td><select name="prefixo">
-	          <option value="january">January</option>
-	          <option value="february">February</option>
-	          <option value="may">May</option>
+	        <td><select name="prefixo" id="prefixo">';
+	        	addPrefixoSpinner();
+	        	echo '
 	        </select></td>
 	        </tr>
 	      </div>
@@ -37,10 +50,23 @@ echo '
 	      <div>
 	      	<tr>
 	        <td><label>Ano</label></td>
-	        <td><select name="ano">
-	          <option value="january">January</option>
-	          <option value="february">February</option>
-	          <option value="may">May</option>
+	        <td><select name="ano" id="ano">
+	        	<script>
+		        		$("#prefixo").on("change",function(){
+					    
+					    var prefixo = $("#prefixo").val();
+					    
+					    $.ajax({
+					        url:"ajaxMap.php",
+					        data:{pref:prefixo},
+					        type: "post",
+					        success : function(resp){
+					            $("#ano").html(resp);               
+					        },
+					        error : function(resp){}
+					    });
+					});
+		        </script>
 	        </select></td>
 	        </tr>
 	      </div>
@@ -49,9 +75,22 @@ echo '
 	        <tr>
 	        <td><label>Mes</label></td>
 	        <td><select name="mes">
-	          <option value="january">January</option>
-	          <option value="february">February</option>
-	          <option value="may">May</option>
+	          <script>
+		        		$("#ano").on("change",function(){
+					    
+					    var ano = $("#ano").val();
+					    
+					    $.ajax({
+					        url:"ajaxMap.php",
+					        data:{a:ano},
+					        type: "post",
+					        success : function(resp){
+					            $("#ano").html(resp);               
+					        },
+					        error : function(resp){}
+					    });
+					});
+		        </script>
 	        </select></td>
 	        </tr>
 	      </div>	     
@@ -61,7 +100,9 @@ echo '
 	        <input type="submit" name="submit" value="Selecionar">  
 	      </td></tr>
 	      </div>
+	      </table>
 	    </form>
+
 	  </div>
 	</section>
 ';

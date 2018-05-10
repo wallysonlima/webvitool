@@ -25,7 +25,7 @@ class PostoDAO {
 
 		while ( $row = $sql->fetch() )
 		{
-			array_push($pre, (String) $row);
+			array_push($pre, (String) $row[0]);
 		}
 
 		$con = null;
@@ -55,7 +55,7 @@ class PostoDAO {
 
 		while ( $row = $sql->fetch() )
 		{ 
-			$texto = (String) $row;
+			$texto = (String) $row[0];
 			$con = null;
 
 			return $texto;
@@ -71,7 +71,7 @@ class PostoDAO {
 
 		while ( $row = $sql->fetch() )
 		{ 
-			$texto = (String) $row;
+			$texto = (String) $row[0];
 			$con = null;
 
 			return $texto;
@@ -87,7 +87,7 @@ class PostoDAO {
 
 		while ( $row = $sql->fetch() )
 		{
-			array_push($pre, (String) $row);
+			array_push($pre, (String) $row)[0];
 		}
 
 		$con = null;
@@ -123,7 +123,7 @@ class PostoDAO {
 
 		while ( $row = $sql->fetch() )
 		{
-			array_push($nome, $row);
+			array_push($nome, $row[0]);
 		}
 
 		$con = null;
