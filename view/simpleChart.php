@@ -2,14 +2,13 @@
 
 include_once("../dao/PostoDAO.php");
 
-$postoDao = new PostoDAO(); 
-
-public function addPrefixoMunicipioSpinner() {
+ function addPrefixoMunicipioSpinner() {
+	$postoDao = new PostoDAO(); 
 	$premuni = array();
 	$premuni = $postoDao->getPrefixoAndMunicipio();
 
 	for($i = 0; $i < sizeof($premuni); $i++) {
-		echo "<option value='$premuni[$i]'>$premuni[$i]</option>";
+		echo "<option value='$premuni[$i]'>$premuni[$i]</option><br>";
 	}
 }
 
@@ -55,16 +54,16 @@ echo '
 		      <div>
 		        <tr>
 		        <td><label>Ano</label></td>
-		        <td><select name="ano" id="ano">';
+		        <td><select name="ano" id="ano">
 		        	<script>
 		        		$("#prefixo").on("change",function(){
 					    
 					    var prefixo = $("#prefixo").val();
 					    
 					    $.ajax({
-					        url:'ajaxSimple.php',
+					        url:"ajaxSimple.php",
 					        data:{pref:prefixo},
-					        type: 'post',
+					        type: "post",
 					        success : function(resp){
 					            $("#ano").html(resp);               
 					        },
@@ -72,8 +71,6 @@ echo '
 					    });
 					});
 		        	</script>
-		        	
-		        	echo '
 		        </select>
 		        </td>
 		        </tr>

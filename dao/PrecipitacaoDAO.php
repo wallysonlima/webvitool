@@ -4,25 +4,20 @@
 	   Github: Wallyson Lima
 	   Date: 03/05/2018
 	*/
-include_once("/home/wlima/Documents/TCC/codigos/webvitool/Model/Database.php");
-include_once("/home/wlima/Documents/TCC/codigos/webvitool/Model/Precipitacao.php");
+include_once("/opt/lampp/htdocs/webvitool/model/Database.php");
+include_once("/opt/lampp/htdocs/webvitool/model/Precipitacao.php");
 
 class PrecipitacaoDAO {
 	private $con;
 	private $tableName;
 
-	public function conectar() {
+	function __construct() {
 		$db = new Database();
 		$this->con = $db->connection();
 		$this->tableName = "posto";
 	}
 
-	public function desconectar() {
-		$con = null;
-	}
-
-	public function getMediaChuvaMes($prefixo, $ano) {
-		conectar();
+	function getMediaChuvaMes($prefixo, $ano) {
 		$sql = $this->con->prepare("SELECT ano, mes, ".
                 "d1, d2, d3, d4, d5, d6, d7, d8, d9, d10,".
                 " d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27,".
@@ -46,13 +41,11 @@ class PrecipitacaoDAO {
 			array_pus($pre, $obj);
 		}
 
-		desconectar();
+		$con = null;
 		return $pre;
 	}
 
-	public function getMediaChuvaAno($prefixo, $ano) {
-		conectar();
-
+	function getMediaChuvaAno($prefixo, $ano) {
 		$sql = $this->con->prepare("SELECT ano, mes, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10,".
                 " d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27,".
                 " d28, d29, d30, d31 FROM `precipitacao` WHERE prefixo='".$prefixo.".dat' and".
@@ -76,29 +69,15 @@ class PrecipitacaoDAO {
 			array_pus($pre, $obj);
 		}
 
-		desconectar();
+		$con = null;
 		return $pre;
 	}
 
-	public function getMedia($dias) {
-		$media = 0;
-		$count = 0;
-
-		foreach($dias as &$d) {
-			if ( $d != 9999 ) {
-				$media += $d;
-				$count++;
-			}
-		}
-
-		if ( count == 0 )
-			return 0;
-
-		return number_format((float)$media/(++$count), 2, '.', '');
+	function getMedia($dias) {
+		
 	}
 
-	public function getMediaChuvaMesPostos($ano, $mes) {
-		conectar();
+	function getMediaChuvaMesPostos($ano, $mes) {
 		$sql = $this->con->prepare("SELECT ".
                 "d1, d2, d3, d4, d5, d6, d7, d8, d9, d10,".
                 " d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27,".
@@ -122,31 +101,39 @@ class PrecipitacaoDAO {
 			for($i = 0; $i < 31; $i++)
 				array_push($dias, (Float) $row[$i]);
 
-			$media = getMedia($dias);
+			
+			$media = 0;
+			$count = 0;
+
+			foreach($dias as &$d) {
+				if ( $d != 9999 ) {
+					$media += $d;
+					$count++;
+				}
+			}	
+
+			$media = number_format((float)$media/(++$count), 2, '.', '');
 			array_push($pre, $media);
 		}
 
-		desconectar();
+		$con = null;
 		return $pre;
 	}
 
-	public function getQtdeMes($prefixo, $ano) {
-		conectar();
+	function getQtdeMes($prefixo, $ano) {
 		$sql = $this->con->prepare("SELECT COUNT(mes) as qtde FROM `precipitacao` WHERE prefixo='".$prefixo.".dat' and ano='".$ano."';");
 		$mes = 0;
 
 		while ( $row = $sql->fetch() )
 		{
 			$mes = (int) $row;
-			desconectar();
+			$con = null;
 			return $mes;
 		}
 
+		$con = null;
 		return null;
 	}
 
 }
-
-	
-
 ?>

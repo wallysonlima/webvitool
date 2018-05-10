@@ -3,7 +3,9 @@
 class Posto {
 	private $prefixo, $nome, $municipio, $bacia, $altitude, $latitude, $longitude, $ano_ini, $ano_fim, $intervalo;
 
-	function __construct($prefixo, $nome, $municipio, $bacia, $altitude, $latitude, $longitude, $ano_ini, $ano_fim, $intervalo) {
+	function __construct(){}
+
+	function postoConstructor1($prefixo, $nome, $municipio, $bacia, $altitude, $latitude, $longitude, $ano_ini, $ano_fim, $intervalo) {
 		$this->prefixo = $prefixo;
 		$this->nome = $nome;
 		$this->municipio = $municipio;
@@ -16,7 +18,7 @@ class Posto {
 		$this->intervalo = $intervalo;
 	}
 
-	function __construct($prefixo, $municipio, $bacia, $latitude, $longitude) {
+	function postoConstructor2($prefixo, $municipio, $bacia, $latitude, $longitude) {
 		$this->prefixo = $prefixo;
 		$this->municipio = $municipio;
 		$this->bacia = $bacia;

@@ -4,25 +4,20 @@
 	   Github: Wallyson Lima
 	   Date: 03/05/2018
 	*/
-include_once("/home/wlima/Documents/TCC/codigos/webvitool/Model/Database.php");
-include_once("/home/wlima/Documents/TCC/codigos/webvitool/Model/Posto.php");
+include_once("/opt/lampp/htdocs/webvitool/model/Database.php");
+include_once("/opt/lampp/htdocs/webvitool/model/Posto.php");
 
 class PostoDAO {
 	private $con;
 	private $tableName;
 
-	public function conectar() {
+	function __construct() {
 		$db = new Database();
 		$this->con = $db->connection();
 		$this->tableName = "posto";
 	}
 
-	public function desconectar() {
-		$con = null;
-	}
-
-	public function getPrefixo() {
-		conectar();
+	function getPrefixo() {
 		$sql = $this->con->prepare("SELECT DISTINCT prefixo FROM `posto`;");
 
 		$sql->execute();
@@ -33,12 +28,12 @@ class PostoDAO {
 			array_push($pre, (String) $row);
 		}
 
-		desconectar();
+		$con = null;
+
 		return $pre;
 	}
 
-	public function getPrefixoAndMunicipio() {
-		conectar();
+	function getPrefixoAndMunicipio() {
 		$sql = $this->con->prepare("SELECT DISTINCT prefixo, municipio FROM `posto`;");
 		$sql->execute();
 		$pre = array();
@@ -49,12 +44,11 @@ class PostoDAO {
 			array_push($pre, (String) $texto);
 		}
 
-		desconectar();
+		$con = null;
 		return $pre;
 	}
 
-	public function getPrefixoMunicipio($municipio) {
-		conectar();
+	function getPrefixoMunicipio($municipio) {
 		$sql = $this->con->prepare("SELECT DISTINCT prefixo FROM `posto` where municipio=?;");
 		$sql->bindValue(1, $municipio);
 		$sql->execute();
@@ -62,15 +56,15 @@ class PostoDAO {
 		while ( $row = $sql->fetch() )
 		{ 
 			$texto = (String) $row;
-			desconectar();
-			return $texto
+			$con = null;
+
+			return $texto;
 		}
 
 		return null;
 	}
 
-	public function getMunicipioPrefixo($prefixo) {
-		conectar();
+	function getMunicipioPrefixo($prefixo) {
 		$sql = $this->con->prepare("SELECT DISTINCT municipio FROM `posto` where prefixo=?;");
 		$sql->bindValue(1, $prefixo);
 		$sql->execute();
@@ -78,15 +72,15 @@ class PostoDAO {
 		while ( $row = $sql->fetch() )
 		{ 
 			$texto = (String) $row;
-			desconectar();
-			return $texto
+			$con = null;
+
+			return $texto;
 		}
 
 		return null;
 	}
 
-	public function getMunicipio() {
-		conectar();
+	function getMunicipio() {
 		$sql = $this->con->prepare("SELECT DISTINCT municipio FROM `posto` ORDER BY municipio;");
 		$sql->execute();
 		$pre = array();
@@ -96,13 +90,12 @@ class PostoDAO {
 			array_push($pre, (String) $row);
 		}
 
-		desconectar();
-		return $pre;
+		$con = null;
 
+		return $pre;
 	}
 
-	public function getAno($prefixo) {
-		conectar();
+	function getAno($prefixo) {
 		$sql = $this->con->prepare("SELECT ano_ini, ano_fim FROM `posto` where prefixo=?;");
 		$sql->bindValue(1, $prefixo);
 		$sql->execute();
@@ -114,12 +107,12 @@ class PostoDAO {
 			array_push($ano, (String) $row[1]);
 		}
 
-		desconectar();
+		$con = null;
+
 		return $ano;
 	}
 
-	public function getNome($prefixo1, $prefixo2, $prefixo3) {
-		conectar();
+	function getNome($prefixo1, $prefixo2, $prefixo3) {
         $sql = $this->con->prepare("SELECT nome FROM `posto` where prefixo IN(?, ?, ?);");
 		$sql->bindValue(1, $prefixo1);
 		$sql->bindValue(2, $prefixo2);
@@ -133,12 +126,12 @@ class PostoDAO {
 			array_push($nome, $row);
 		}
 
-		desconectar();
+		$con = null;
+
 		return $nome;
 	}
 
-	public function getInfoPosto() {
-		conectar();
+	function getInfoPosto() {
 		$sql = $this->con->prepare("SELECT prefixo, municipio, bacia, latitude, longitude FROM `posto` WHERE prefixo IN (".
                 "'D4-004', 'B7-047', ".
                 "'C5-008', 'D7-020', 'E3-074', 'D5-080', 'B5-002', 'D6-001', 'D5-019', ".
@@ -154,11 +147,13 @@ class PostoDAO {
 
 		while ( $row = $sql->fetch() )
 		{
-			$posto = new Posto($row[0], $row[1], $row[2], $row[3], $row[4]);
+			$posto = new Posto();
+			$posto->postoConstructor2($row[0], $row[1], $row[2], $row[3], $row[4]);
 			array_push($postos, $posto);
 		}
 
-		desconectar();
+		$con = null;
+
 		return $postos;
 	}
 }
