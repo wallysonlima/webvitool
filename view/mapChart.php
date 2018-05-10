@@ -75,7 +75,7 @@ echo '
 	      <div>
 	        <tr>
 	        <td><label>Mes</label></td>
-	        <td><select name="mes">
+	        <td><select name="mes" id="mes">
 	          <script>
 		        		$("#ano").on("change",function(){
 					    
@@ -84,10 +84,10 @@ echo '
 					    
 					    $.ajax({
 					        url:"ajaxMapMes.php",
-					        data:{pref:prefixo, a:ano},
+					        data:{a:ano, pre2:prefixo},
 					        type: "post",
 					        success : function(resp){
-					            $("#ano").html(resp);               
+					            $("#mes").html(resp);               
 					        },
 					        error : function(resp){}
 					    });

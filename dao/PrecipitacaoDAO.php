@@ -140,6 +140,7 @@ class PrecipitacaoDAO {
 	function getQtdeMes($prefixo, $ano) {
 		$sql = $this->con->prepare("SELECT COUNT(mes) as qtde FROM `precipitacao` WHERE prefixo='".$prefixo.".dat' and ano='".$ano."';");
 		$mes = 0;
+		$sql->execute();
 
 		while ( $row = $sql->fetch() )
 		{

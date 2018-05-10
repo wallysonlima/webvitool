@@ -4,7 +4,7 @@ include_once("../dao/PrecipitacaoDAO.php");
 
 $preDao = new PrecipitacaoDAO();
 $ano = $_POST['a'];
-$prefixo = $_POST['pref'];
+$prefixo = $_POST['pre2'];
 $qtde = $preDao->getQtdeMes($prefixo, $ano);
 $mes = array();
 
@@ -47,10 +47,13 @@ for($i = 0; $i < $qtde; $i++) {
             array_push($mes, "Dezembro");
             break;
     }
+
+    if ( $i == 12 )
+        break;
 }
 
-for($i = 0; $i < $qtde; $i++) {
-	echo "<option value='".$mes[$i]."'>".$mes[$i]."</option>";
+for($i = 0; $i < sizeof($mes); $i++) {
+	echo "<option value='$mes[$i]'>$mes[$i]</option>";
 }
 
 ?>
