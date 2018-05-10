@@ -35,7 +35,18 @@ class PrecipitacaoDAO {
 			for($i = 2; $i < 33; $i++)
 				array_push($dias, (Float) $row[$i]);
 
-			$media = getMedia($dias);
+			$media = 0;
+			$count = 0;
+
+			foreach($dias as &$d) {
+				if ( $d != 9999 ) {
+					$media += $d;
+					$count++;
+				}
+			}	
+
+			$media = number_format((float)$media/(++$count), 2, '.', '');
+
 
 			$obj = new Precipitacao($prefixo, $ano, $mes, $media);
 			array_pus($pre, $obj);
@@ -63,7 +74,17 @@ class PrecipitacaoDAO {
 			for($i = 2; $i < 33; $i++)
 				array_push($dias, (Float) $row[$i]);
 
-			$media = getMedia($dias);
+			$media = 0;
+			$count = 0;
+
+			foreach($dias as &$d) {
+				if ( $d != 9999 ) {
+					$media += $d;
+					$count++;
+				}
+			}	
+
+			$media = number_format((float)$media/(++$count), 2, '.', '');
 
 			$obj = new Precipitacao($prefixo, $ano, $mes, $media);
 			array_pus($pre, $obj);
@@ -71,10 +92,6 @@ class PrecipitacaoDAO {
 
 		$con = null;
 		return $pre;
-	}
-
-	function getMedia($dias) {
-		
 	}
 
 	function getMediaChuvaMesPostos($ano, $mes) {

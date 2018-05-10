@@ -35,7 +35,7 @@ var svg = d3.select("body").append("svg")
 
 svg.call(tip);
 
-d3.csv("file:///data/data/wallyson.lima.mobivitool/files/simple.csv", type, function(error, data) {
+d3.csv("../data/simple.csv", type, function(error, data) {
   var tipo = document.getElementById("tipo").getAttribute('value');
 
   if ( tipo  == "media" ) {

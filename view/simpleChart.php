@@ -26,7 +26,6 @@ echo '
 	      #imageTemp { position: absolute; top: 1px; left: 1px; }
 	    </style>
 	     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    	 <script src="script/simpleChart.js"></script>
 	</head>
 	<body>	
 ';
@@ -102,6 +101,9 @@ echo '
 require_once("footer.php");
 
 echo '
+	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript" src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+	<script type="text/javascript" src="js/simpleDraw.js"></script>
 	</body>
 	</html>
 ';
