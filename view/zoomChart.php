@@ -75,7 +75,7 @@ echo '
 	      <div>
 	      	<tr>
 	        <td><label>Quantidade</label></td>
-	        <td><select name="qtde">';
+	        <td><select name="qtde" id="qtde">';
 	        	for($i = 0; $i < 10; $i++) {
 					echo "<option value='$i'>".($i+1)."</option>";
 				}
