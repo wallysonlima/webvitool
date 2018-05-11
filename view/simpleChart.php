@@ -25,7 +25,7 @@ echo '
 	      #imageView { border: 1px solid #000; }
 	      #imageTemp { position: absolute; top: 1px; left: 1px; }
 	    </style>
-	     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	</head>
 	<body>	
 ';
