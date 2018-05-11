@@ -3,13 +3,13 @@
 include_once("../dao/PostoDAO.php");
 include_once("../dao/PrecipitacaoDAO.php");
 
-$pre = split("/", $_POST["prefixo"]);
+$pre = explode("/", $_POST["prefixo"]);
 $ano = $_POST["ano"];
 $opcao = $_POST["mes"];
 $prefixo = $pre[0];
 $municipio = $pre[1];
 
-writeData();
+writeData($prefixo, $ano);
 
 echo '
 	<!DOCTYPE html>
@@ -70,103 +70,139 @@ echo '
 	  left: 0;
 	}
 
-	h1 {
+	#info {
 	    text-align: center;
 	    color: #00BCD4;
 	    font-family: arial, serif, Times;
 	    border-bottom: 1px solid #00BCD4;
-	    font-size: 10px;
+	    font-size: 20px;
 	}
 	</style>
 
 	<head>
 		<title>Webvitool</title>
-		<link rel="stylesheet" href="css/estilo.css">
+		<link rel="stylesheet" href="../view/css/estilo.css">
 		<style type="text/css">
 	      #container { position: relative; }
 	      #imageView { border: 1px solid #000; }
 	      #imageTemp { position: absolute; top: 1px; left: 1px; }
 	    </style>
-	     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    	 <script src="script/simpleChart.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	</head>
 	<body>	
 ';
 
-require_once("header.php");
-require_once("nav.php");
+require_once("../view/header.php");
+require_once("../view/nav.php");
 
 echo '
 	<section>
 	  <div id="container">  
-	   	<h1>   Media Chuva p/ Mes: $prefixo / $municipio / $ano </h1>
+	   	<h1 id="info">   Media Chuva p/ Mes: $prefixo / $municipio / $ano </h1>
 	   	<div id="tipo" value="$tipo"></div>
  	  </div>
 	</section>
 ';
 
 
-require_once("footer.php");
-
-<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-<script type="text/javascript" src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-<script type="text/javascript" src="../view/js/simpleDraw.js"></script>
+require_once("../view/footer.php");
 
 echo '
+	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript" src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+	<script type="text/javascript" src="../view/js/simpleDraw.js"></script>
 	</body>
 	</html>
 ';
 
-public function writeData() {
+function writeData($prefixo, $ano) {
 	$preDao = new PrecipitacaoDAO();
 	$arrayPre = $preDao->getMediaChuvaAno($prefixo, $ano);
-	$texto = "letter,frequency\n";
-
-	$file = fopen("simple.csv","w");
+	$file = fopen("../view/data/simple.csv","w+");
+	
+	$texto = array();
+	array_push($texto, "letter");
+	array_push($texto, "frequency");
+	fputcsv($file, $texto);
 
 	foreach ($arrayPre as $p)
 	{
 		switch( $p->getMes() ) {
 			case "01":
-                $texto += "Jan," + $p->getMedia() + "\n";
+				$texto = array();
+                array_push($texto, "Jan");
+                array_push($texto, $p->getMedia());
+                fputcsv($file, $texto);
                 break;
             case "02":
-                $texto += "Feb," + $p->getMedia() + "\n";
+            	$texto = array();
+                array_push($texto, "Feb");
+                array_push($texto, $p->getMedia());
+                fputcsv($file, $texto);
                 break;
             case "03":
-                $texto += "Mar," + $p->getMedia() + "\n";
+                $texto = array();
+                array_push($texto, "Mar");
+                array_push($texto, $p->getMedia());
+                fputcsv($file, $texto);
                 break;
             case "04":
-                $texto += "Apr," + $p->getMedia() + "\n";
+                $texto = array();
+                array_push($texto, "Apr");
+                array_push($texto, $p->getMedia());
+                fputcsv($file, $texto);
                 break;
             case "05":
-                $texto += "May," + $p->getMedia() + "\n";
+                $texto = array();
+                array_push($texto, "May");
+                array_push($texto, $p->getMedia());
+                fputcsv($file, $texto);
                 break;
             case "06":
-                $texto += "Jun," + $p->getMedia() + "\n";
+             	$texto = array();
+                array_push($texto, "Jun");
+                array_push($texto, $p->getMedia());
+                fputcsv($file, $texto);
                 break;
             case "07":
-                $texto += "Jul," + $p->getMedia() + "\n";
+            	$texto = array();
+                array_push($texto, "Jul");
+                array_push($texto, $p->getMedia());
+                fputcsv($file, $texto);
                 break;
             case "08":
-                $texto += "Aug," + $p->getMedia() + "\n";
+            	$texto = array();
+                array_push($texto, "Aug");
+                array_push($texto, $p->getMedia());
+                fputcsv($file, $texto);
                 break;
             case "09":
-                $texto += "Sep," + $p->getMedia() + "\n";
+           		$texto = array();
+                array_push($texto, "Sep");
+                array_push($texto, $p->getMedia());
+                fputcsv($file, $texto);
                 break;
             case "10":
-                $texto += "Oct," + $p->getMedia() + "\n";
+            	$texto = array();
+                array_push($texto, "Oct");
+                array_push($texto, $p->getMedia());
+                fputcsv($file, $texto);
                 break;
             case "11":
-                $texto += "Nov," + $p->getMedia() + "\n";
+            	$texto = array();
+                array_push($texto, "Nov");
+                array_push($texto, $p->getMedia());
+                fputcsv($file, $texto);
                 break;
             case "12":
-                $texto += "Dec," + $p->getMedia() + "\n";
+            	$texto = array();
+                array_push($texto, "Dec");
+                array_push($texto, $p->getMedia());
+                fputcsv($file, $texto);
                 break;
 		}
 	}
 
-	fputcsv($file, $texto);
 	fclose($file); 
 }
 
