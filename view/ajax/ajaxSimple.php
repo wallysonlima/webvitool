@@ -1,5 +1,5 @@
 <?php
-	include_once("../dao/PostoDAO.php");
+	include_once("../../dao/PostoDAO.php");
 	$postoDao = new PostoDAO(); 
 	$ano = array();
 

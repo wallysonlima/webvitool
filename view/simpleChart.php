@@ -60,7 +60,7 @@ echo '
 					    var prefixo = $("#prefixo").val();
 					    
 					    $.ajax({
-					        url:"ajaxSimple.php",
+					        url:"ajax/ajaxSimple.php",
 					        data:{pref:prefixo},
 					        type: "post",
 					        success : function(resp){

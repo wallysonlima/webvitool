@@ -58,7 +58,7 @@ echo '
 					    var prefixo = $("#prefixo").val();
 					    
 					    $.ajax({
-					        url:"ajaxMapAno.php",
+					        url:"ajax/ajaxMapAno.php",
 					        data:{pref:prefixo},
 					        type: "post",
 					        success : function(resp){
@@ -83,7 +83,7 @@ echo '
 					    var prefixo = $("#prefixo").val();
 					    
 					    $.ajax({
-					        url:"ajaxMapMes.php",
+					        url:"ajax/ajaxMapMes.php",
 					        data:{a:ano, pre2:prefixo},
 					        type: "post",
 					        success : function(resp){

@@ -1,6 +1,6 @@
 <?php
-include_once("../dao/PostoDAO.php");
-include_once("../dao/PrecipitacaoDAO.php");
+include_once("../../dao/PostoDAO.php");
+include_once("../../dao/PrecipitacaoDAO.php");
 
 $preDao = new PrecipitacaoDAO();
 $ano = $_POST['a'];
