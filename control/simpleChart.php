@@ -169,7 +169,6 @@ function writeData($prefixo, $ano) {
 	foreach ($list as $line)
   	{
   		fputcsv($file, explode(',',$line));
-  		echo $line;
   	}
 
 	fclose($file); 

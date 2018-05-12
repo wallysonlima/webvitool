@@ -1,7 +1,7 @@
 
 var margin = {top: 0, right: 20, bottom: 30, left: 30},
-    width = 610 - margin.left - margin.right,
-    height = 260 - margin.top - margin.bottom;
+    width = 710 - margin.left - margin.right,
+    height = 280 - margin.top - margin.bottom;
 
 //var formatPercent = d3.format(".0%");
 
@@ -27,7 +27,7 @@ var tip = d3.tip()
     return "<strong>Media:</strong> <span style='color:red'>" + d.frequency + "</span>";
   })
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#container").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -35,7 +35,7 @@ var svg = d3.select("body").append("svg")
 
 svg.call(tip);
 
-d3.csv("../data/simple.csv", type, function(error, data) {
+d3.csv("../view/data/simple.csv", type, function(error, data) {
   var tipo = document.getElementById("tipo").getAttribute('value');
 
   if ( tipo  == "media" ) {

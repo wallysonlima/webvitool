@@ -86,8 +86,6 @@ class PrecipitacaoDAO {
 
 			$media = number_format((float)$media/(++$count), 2, '.', '');
 			$obj = new Precipitacao($prefixo, $ano, $mes, $media);
-
-			echo $obj->getPrefixo()." - ".$obj->getMedia()."\n";
 			
 			array_push($pre, $obj);
 		}
