@@ -104,10 +104,8 @@ class PrecipitacaoDAO {
                 "'D3-002.dat', 'E5-047.dat', 'E3-038.dat', 'C8-043.dat', 'B4-001.dat', 'E3-002.dat', 'E4-135.dat', 'E4-023.dat', 'C5-025.dat', "."'B7-008.dat', 'E3-025.dat', 'D4-064.dat', 'D6-010.dat', 'E3-264.dat', 'D4-002.dat', 'D8-003.dat', ".
                 "'F4-004.dat', 'C4-034.dat', 'E3-041.dat', 'C4-019.dat', 'C3-031.dat', 'B6-014.dat', 'D2-021.dat', 'E3-003.dat', 'E2-045.dat', ".
                 "'E4-056.dat', 'E2-022.dat', 'B6-032.dat') ".
-                "and ano=? and mes=?;");
+                "and ano='".$ano."' and mes='".$mes."';");
 
-		$sql->bindValue(1, $ano);
-		$sql->bindValue(2, $mes);
 		$sql->execute();
 		$pre = array();
 

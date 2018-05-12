@@ -25,8 +25,7 @@ function createNYCMap(){
             var svg = d3.select("#map_4")
             .append("svg")
             .attr("width", width_4)
-            .attr("height", height_4)
-            .style("margin-left", 100);
+            .attr("height", height_4);
 
             // Define the g for each neighborhood
             var g = svg.append("g");
@@ -76,8 +75,8 @@ function createNYCMap(){
                    "Media:" + '<strong id="media"></strong>'
                    )
                 // Place the tooltip
-                div.style("left", (d3.mouse(this)[0]) + "px")
-                .style("top", (d3.mouse(this)[1]) + "px");
+                div.style("left", ((d3.mouse(this)[0]) + 200) + "px")
+                .style("top", ((d3.mouse(this)[1]) + 300) + "px");
 
                 // Load CSV for filling the missing info on tooltip
                 d3.csv("../view/data/map.csv", function(data) {

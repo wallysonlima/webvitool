@@ -140,7 +140,6 @@ class PostoDAO {
                 "'F4-004', 'C4-034.dat', 'E3-041', 'C4-019', 'C3-031', 'B6-014', 'D2-021', 'E3-003', 'E2-045', ".
                 "'E4-056', 'E2-022', 'B6-032') GROUP BY prefixo;");
 
-		$sql->bindValue(1, $prefixo);
 		$sql->execute();
 
 		$postos = array();
