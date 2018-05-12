@@ -1,6 +1,6 @@
 // Define global variables
-var width_4 = 400,
-height_4 = 260,
+var width_4 = 710,
+height_4 = 280,
 centered;
 
 function createNYCMap(){
@@ -33,7 +33,7 @@ function createNYCMap(){
 
             var tooltip = d3.select("#map_4").append("div").attr("class","tooltip");
 
-            d3.json("data/sp.topojson", function(error, geodata) {
+            d3.json("../view/data/sp.topojson", function(error, geodata) {
                 if (error) return console.log(error);
 
                 //Create a path for each map feature in the data
@@ -80,7 +80,7 @@ function createNYCMap(){
                 .style("top", (d3.mouse(this)[1]) + "px");
 
                 // Load CSV for filling the missing info on tooltip
-                d3.csv("file:///data/data/wallyson.lima.mobivitool/files/map.csv", function(data) {
+                d3.csv("../view/data/map.csv", function(data) {
                     var districtName = removeAccents(d.properties.Agencia_CE.toLowerCase().toUpperCase().substring(21));
                     var matchFound = false;
                     for(var i=0;i<data.length;i++) {
