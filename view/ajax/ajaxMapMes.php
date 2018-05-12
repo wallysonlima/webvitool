@@ -47,9 +47,6 @@ for($i = 0; $i < $qtde; $i++) {
             array_push($mes, "Dezembro");
             break;
     }
-
-    if ( $i == 12 )
-        break;
 }
 
 for($i = 0; $i < sizeof($mes); $i++) {

@@ -22,6 +22,6 @@ $duracao = (int)$ano[1] - (int)$ano[0];
 $ano_ini = (int) $ano[0];
 
 for($i = 0; $i < $duracao; $i++) {
-	echo "<option value='".$ano_ini."'>".($ano_ini + $i)."</option>";
+	echo "<option value='".($ano_ini + $i)."'>".($ano_ini + $i)."</option>";
 }
 ?>

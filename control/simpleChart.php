@@ -118,7 +118,7 @@ echo '
 function writeData($prefixo, $ano) {
 	$preDao = new PrecipitacaoDAO();
 	$arrayPre = $preDao->getMediaChuvaAno($prefixo, $ano);
-	$file = fopen("../view/data/simple.csv","w+");
+	$file = fopen("../view/data/simple.csv","w");
 	
 	$corpo = "letter,frequency\n";
 
