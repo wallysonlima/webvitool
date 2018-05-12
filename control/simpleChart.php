@@ -5,7 +5,7 @@ include_once("../dao/PrecipitacaoDAO.php");
 
 $pre = explode("/", $_POST["prefixo"]);
 $ano = $_POST["ano"];
-$opcao = $_POST["mes"];
+$tipo = $_POST["mes"];
 $prefixo = $pre[0];
 $municipio = $pre[1];
 
@@ -98,8 +98,8 @@ require_once("../view/nav.php");
 echo '
 	<section>
 	  <div id="container">  
-	   	<h1 id="info">   Media Chuva p/ Mes: $prefixo / $municipio / $ano </h1>
-	   	<div id="tipo" value="$tipo"></div>
+	   	<h1 id="info">   Media Chuva p/ Mes: '.$prefixo.' / '.$municipio.' / '.$ano.' </h1>
+	   	<div id="tipo" value="'.$tipo.'"></div>
  	  </div>
 	</section>
 ';
@@ -120,88 +120,57 @@ function writeData($prefixo, $ano) {
 	$arrayPre = $preDao->getMediaChuvaAno($prefixo, $ano);
 	$file = fopen("../view/data/simple.csv","w+");
 	
-	$texto = array();
-	array_push($texto, "letter");
-	array_push($texto, "frequency");
-	fputcsv($file, $texto);
+	$corpo = "letter,frequency\n";
 
 	foreach ($arrayPre as $p)
 	{
 		switch( $p->getMes() ) {
 			case "01":
-				$texto = array();
-                array_push($texto, "Jan");
-                array_push($texto, $p->getMedia());
-                fputcsv($file, $texto);
+                $corpo .= "Jan,".$p->getMedia()."\n";
                 break;
             case "02":
-            	$texto = array();
-                array_push($texto, "Feb");
-                array_push($texto, $p->getMedia());
-                fputcsv($file, $texto);
+            	$corpo .= "Feb,".$p->getMedia()."\n";
                 break;
             case "03":
-                $texto = array();
-                array_push($texto, "Mar");
-                array_push($texto, $p->getMedia());
-                fputcsv($file, $texto);
+            	$corpo .= "Mar,".$p->getMedia()."\n";
                 break;
             case "04":
-                $texto = array();
-                array_push($texto, "Apr");
-                array_push($texto, $p->getMedia());
-                fputcsv($file, $texto);
+                $corpo .= "Apr,".$p->getMedia()."\n";
                 break;
             case "05":
-                $texto = array();
-                array_push($texto, "May");
-                array_push($texto, $p->getMedia());
-                fputcsv($file, $texto);
+                $corpo .= "May,".$p->getMedia()."\n";
                 break;
             case "06":
-             	$texto = array();
-                array_push($texto, "Jun");
-                array_push($texto, $p->getMedia());
-                fputcsv($file, $texto);
+            	$corpo .= "Jun,".$p->getMedia()."\n";
                 break;
             case "07":
-            	$texto = array();
-                array_push($texto, "Jul");
-                array_push($texto, $p->getMedia());
-                fputcsv($file, $texto);
+            	$corpo .= "Jul,".$p->getMedia()."\n";
                 break;
             case "08":
-            	$texto = array();
-                array_push($texto, "Aug");
-                array_push($texto, $p->getMedia());
-                fputcsv($file, $texto);
+            	$corpo .= "Aug,".$p->getMedia()."\n";
                 break;
             case "09":
-           		$texto = array();
-                array_push($texto, "Sep");
-                array_push($texto, $p->getMedia());
-                fputcsv($file, $texto);
+           		$corpo .= "Sep,".$p->getMedia()."\n";
                 break;
             case "10":
-            	$texto = array();
-                array_push($texto, "Oct");
-                array_push($texto, $p->getMedia());
-                fputcsv($file, $texto);
+            	$corpo .= "Oct,".$p->getMedia()."\n";
                 break;
             case "11":
-            	$texto = array();
-                array_push($texto, "Nov");
-                array_push($texto, $p->getMedia());
-                fputcsv($file, $texto);
+            	$corpo .= "Nov,".$p->getMedia()."\n";
                 break;
             case "12":
-            	$texto = array();
-                array_push($texto, "Dec");
-                array_push($texto, $p->getMedia());
-                fputcsv($file, $texto);
+            	$corpo .= "Dec,".$p->getMedia()."\n";
                 break;
 		}
 	}
+
+	$list = explode("\n", $corpo);
+	
+	foreach ($list as $line)
+  	{
+  		fputcsv($file, explode(',',$line));
+  		echo $line;
+  	}
 
 	fclose($file); 
 }
