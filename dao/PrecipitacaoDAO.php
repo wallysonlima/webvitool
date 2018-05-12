@@ -38,7 +38,7 @@ class PrecipitacaoDAO {
 			$media = 0;
 			$count = 0;
 
-			foreach($dias as $d) {
+			foreach($dias as &$d) {
 				if ( $d != 9999 ) {
 					$media += $d;
 					$count++;
@@ -77,7 +77,7 @@ class PrecipitacaoDAO {
 			$media = 0;
 			$count = 0;
 
-			foreach($dias as $d) {
+			foreach($dias as &$d) {
 				if ( $d != 9999 ) {
 					$media += $d;
 					$count++;
@@ -85,8 +85,10 @@ class PrecipitacaoDAO {
 			}	
 
 			$media = number_format((float)$media/(++$count), 2, '.', '');
-
 			$obj = new Precipitacao($prefixo, $ano, $mes, $media);
+
+			echo $obj->getPrefixo()." - ".$obj->getMedia()."\n";
+			
 			array_push($pre, $obj);
 		}
 

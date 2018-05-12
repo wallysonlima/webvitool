@@ -6,7 +6,7 @@ include_once("../dao/PrecipitacaoDAO.php");
 $pre = explode("/", $_POST["prefixo"]);
 $ano = $_POST["ano"];
 $tipo = $_POST["mes"];
-$prefixo = $pre[0];
+$prefixo = substr($pre[0], 0, -1);
 $municipio = $pre[1];
 
 writeData($prefixo, $ano);
@@ -165,7 +165,7 @@ function writeData($prefixo, $ano) {
 	}
 
 	$list = explode("\n", $corpo);
-	
+
 	foreach ($list as $line)
   	{
   		fputcsv($file, explode(',',$line));
