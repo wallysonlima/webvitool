@@ -20,7 +20,14 @@ require_once("nav.php");
 
 echo '
 	<section>
-		<div id="container">	
+		<div id="apresentacao">
+			<img class="logo2" src="../view/imagens/ic_mobivitool-web.png" alt="Webvitool Logo">	
+			<p><b>
+				Webvitool (Web Visualization Tool) is a tool for creating<br>
+				various data visualizations with PHP, HTML/CSS, Javascript,<br>
+				Ajax, JQuery and Mysql. The webvitool is the web version<br>
+				of mobivitool.</b>
+			</p>
    		</div>
 	</section>
 ';

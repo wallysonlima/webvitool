@@ -149,3 +149,30 @@ footer {
 	margin-left: 160px;
 	margin-top: 20px;
 }
+
+#apresentacao {
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.logo2 {
+	margin-left: 80px;
+	margin-top: 100px;
+	width: 150px;
+	height: 150px;
+	float: left;
+}
+
+#apresentacao p {
+	float: left;
+	margin-left: 30px;
+	margin-top: 120px;
+	font-size: 20px;
+	text-align: justify;
+	line-height:30px;
+}
+
+#chart1 {
+	width: 1000px;
+	height: 400px;
+}

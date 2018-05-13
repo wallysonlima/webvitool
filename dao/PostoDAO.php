@@ -117,7 +117,6 @@ class PostoDAO {
 		$sql->execute();
 		
 		$nome = array();
-		echo "SELECT nome FROM `posto` where prefixo IN('".$prefixo1."', '".$prefixo2."', '".$prefixo3."');";
 
 		while ( $row = $sql->fetch() )
 		{
