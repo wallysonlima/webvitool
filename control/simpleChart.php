@@ -164,12 +164,7 @@ function writeData($prefixo, $ano) {
 		}
 	}
 
-	$list = explode("\n", $corpo);
-
-	foreach ($list as $line)
-  	{
-  		fputcsv($file, explode(',',$line));
-  	}
+	fwrite($file, $corpo);
 
 	fclose($file); 
 }

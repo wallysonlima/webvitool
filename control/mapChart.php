@@ -118,12 +118,7 @@ function writeData($prefixo, $ano, $mes) {
         substr($postos[$i]->getLongitude(), 1).",".$medias[$i]."\n";
     }
 
-    $list = explode("\n", $texto);
-
-    foreach ($list as $line)
-    {
-        fputcsv($file, explode(',', $line));
-    }
+    fwrite($file, $texto);
 
     fclose($file); 
 }

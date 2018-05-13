@@ -49,7 +49,7 @@ class PrecipitacaoDAO {
 
 
 			$obj = new Precipitacao($prefixo, $ano, $mes, $media);
-			array_pus($pre, $obj);
+			array_push($pre, $obj);
 		}
 
 		$con = null;
