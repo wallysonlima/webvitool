@@ -113,13 +113,11 @@ class PostoDAO {
 	}
 
 	function getNome($prefixo1, $prefixo2, $prefixo3) {
-        $sql = $this->con->prepare("SELECT nome FROM `posto` where prefixo IN(?, ?, ?);");
-		$sql->bindValue(1, $prefixo1);
-		$sql->bindValue(2, $prefixo2);
-		$sql->bindValue(3, $prefixo3);
+        $sql = $this->con->prepare("SELECT nome FROM `posto` where prefixo IN('".$prefixo1."', '".$prefixo2."', '".$prefixo3."');");
 		$sql->execute();
 		
 		$nome = array();
+		echo "SELECT nome FROM `posto` where prefixo IN('".$prefixo1."', '".$prefixo2."', '".$prefixo3."');";
 
 		while ( $row = $sql->fetch() )
 		{
