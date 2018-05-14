@@ -110,8 +110,6 @@ function writeData($prefixo, $ano, $mes) {
     $texto = "municipio,prefixo,bacia,latitude,longitude,media\n";
     $file = fopen("../view/data/map.csv","w+");
 
-    echo sizeof($medias);
-
     for($i = 0; $i < sizeof($medias); $i++) {
         $texto .= $postos[$i]->getMunicipio().",".$postos[$i]->getPrefixo().",".
         $postos[$i]->getBacia().",".substr($postos[$i]->getLatitude(), 1).",".
