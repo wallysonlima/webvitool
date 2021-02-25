@@ -27,3 +27,6 @@ data of the state of São Paulo. </h3>
 ![MapChart](https://github.com/wallysonlima/webvitool/blob/master/printscreens/mapChart1.png)
 ![MapChart2](https://github.com/wallysonlima/webvitool/blob/master/printscreens/mapChart2.png)
 ![ZoomChart](https://github.com/wallysonlima/webvitool/blob/master/printscreens/brush_zoom.png)
+
+<hr>
+<h5>Developed by Wallyson Lima</h5>
